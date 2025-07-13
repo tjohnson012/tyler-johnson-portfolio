@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tyler Jalon Johnson - Portfolio</title>
+    <style>
+        :root {
+            --bearcat-red: #C8102E;
+            --bearcat-black: #000000;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #333333;
+            --light-gray: #666666;
+            --text-light: #f8f9fa;
+            --text-gray: #e9ecef;
+            --border-dark: #333333;
+            --accent-glow: rgba(200, 16, 46, 0.2);
+            --gradient-red: linear-gradient(135deg, #C8102E, #ff4757);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background: var(--bearcat-black);
+        }
+
+        /* Daniel's Clean Navigation with Dark Theme */
+        .navbar-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-dark);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-container.scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            border-bottom: 2px solid var(--bearcat-red);
+            box-shadow: 0 2px 20px rgba(200, 16, 46, 0.2);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-red);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .navbar-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .navbar-link {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-link:hover {
+            color: var(--bearcat-red);
+        }
+
+        .navbar-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--gradient-red);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-link:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            margin-top: 80px;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            padding: 2rem 0;
+        }
+
+        /* Daniel's Header Style with Dark Theme */
+        .header-text {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            border-bottom: 3px solid var(--bearcat-red);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+            position: relative;
+        }
+
+        .header-text::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-red);
+            border-radius: 2px;
+        }
+
+        .body-text {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            color: var(--text-gray);
+        }
+
+        .link-text {
+            color: var(--bearcat-red);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .link-text:hover {
+            color: #ff4757;
+            text-decoration: underline;
+        }
+
+        /* Daniel's Skills Matrix with Dark Theme */
+        .subtitle-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 1.5rem 0 1rem 0;
+            background: var(--gradient-red);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .matrix-container {
+            margin: 1.5rem 0;
+        }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--dark-gray);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-dark);
+        }
+
+        .matrix-table td {
+            padding: 1.5rem;
+            border: 1px solid var(--border-dark);
+            text-align: center;
+            font-weight: 500;
+            background: var(--dark-gray);
+            color: var(--text-gray);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .matrix-table td:hover {
+            background: var(--accent-glow);
+            color: var(--bearcat-red);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(200, 16, 46, 0.3);
+        }
+
+        /* Hybrid Skills Section - Daniel's Organization + Ayomide's Visual Style */
+        .skills-hybrid {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: var(--dark-gray);
+            border-radius: 16px;
+            border: 2px solid var(--border-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skills-hybrid::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            animation: skillsGlow 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes skillsGlow {
+            0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.3; }
+            50% { transform: rotate(180deg) scale(1.1); opacity: 0.6; }
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-tag {
+            background: var(--medium-gray);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            color: var(--text-gray);
+            border: 2px solid var(--border-dark);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--bearcat-red);
+            color: var(--bearcat-red);
+            background: var(--accent-glow);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(200, 16, 46, 0.4);
+        }
+
+                /* Project Integration Styles */
+        .project-intro {
+            background: var(--dark-gray);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--bearcat-red);
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .body-text {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            color: var(--text-gray);
+        }
+
+        .subtitle-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 1.5rem 0 1rem 0;
+            background: var(--gradient-red);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .bearcat-demo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--dark-gray);
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .phone-frame {
+            width: 375px;
+            height: 650px;
+            background: #000;
+            border-radius: 40px;
+            padding: 8px;
+            box-shadow: 0 25px 80px rgba(200, 16, 46, 0.3);
+            position: relative;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .status-bar {
+            height: 35px;
+            background: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #000;
+            flex-shrink: 0;
+        }
+
+        .status-right {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .app-header {
+            background: linear-gradient(135deg, #C8102E, #a00f26);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .app-title {
+            font-size: 20px;
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .app-subtitle {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            flex-shrink: 0;
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 12px 8px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: none;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+
+        .nav-tab.active {
+            color: #C8102E;
+            border-bottom-color: #C8102E;
+            background: #fff5f5;
+        }
+
+        .nav-tab:hover {
+            background: #f8f9fa;
+        }
+
+        .app-content-area {
+            flex: 1;
+            overflow-y: auto;
+            background: #f8f9fa;
+        }
+
+        .app-content-section {
+            display: none;
+            padding: 15px;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .app-content-section.active {
+            display: block;
+        }
+
+        .filter-section {
+            margin-bottom: 15px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: 500;
+            border: 1px solid #ddd;
+            background: white;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: #C8102E;
+            color: white;
+            border-color: #C8102E;
+        }
+
+        .game-card {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 1px solid #e8e8e8;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .game-card:hover {
+            transform: translateY(-1px);
+        }
+
+        .game-header {
+            background: linear-gradient(135deg, #C8102E, #a00f26);
+            color: white;
+            padding: 8px 15px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .game-content {
+            padding: 15px;
+        }
+
+        .game-matchup {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .team-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .team-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 14px;
+            color: white;
+        }
+
+        .team-logo.cincinnati { background: #C8102E; }
+        .team-logo.kansas { background: #0051ba; }
+        .team-logo.baylor { background: #003015; }
+        .team-logo.houston { background: #C8102E; }
+        .team-logo.texas-tech { background: #cc0000; }
+        .team-logo.west-virginia { background: #002855; }
+
+        .team-info h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #000;
+            margin: 0;
+        }
+
+        .team-info p {
+            font-size: 11px;
+            color: #666;
+            margin: 1px 0 0 0;
+        }
+
+        .vs-divider {
+            font-size: 12px;
+            font-weight: 600;
+            color: #999;
+            margin: 0 8px;
+        }
+
+        .score-display {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 900;
+            color: #C8102E;
+            margin: 5px 0;
+        }
+
+        .game-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .game-time {
+            text-align: right;
+        }
+
+        .date {
+            font-size: 12px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .time {
+            font-size: 10px;
+            color: #666;
+            margin-top: 1px;
+        }
+
+        .game-status {
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .upcoming {
+            background: #e8f5e8;
+            color: #2d7d2d;
+        }
+
+        .final {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        .news-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .news-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        .news-excerpt {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .news-meta {
+            font-size: 10px;
+            color: #999;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .team-card .team-logo {
+            width: 45px;
+            height: 45px;
+        }
+
+        .team-details h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+            margin: 0 0 3px 0;
+        }
+
+        .team-details p {
+            font-size: 12px;
+            color: #666;
+            margin: 1px 0;
+        }
+
+        .project-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .project-button {
+            background: var(--bearcat-red);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .project-button:hover {
+            background: #ff4757;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(200, 16, 46, 0.4);
+        }
+
+        .app-content-area::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .app-content-area::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .app-content-area::-webkit-scrollbar-thumb {
+            background: #C8102E;
+            border-radius: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .phone-frame {
+                width: 320px;
+                height: 580px;
+            }
+            
+            .bearcat-demo-container {
+                padding: 1rem;
+            }
+            
+            .project-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Daniel's Project Structure with Dark Theme */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .project-card {
+            background: var(--dark-gray);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-dark);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent-glow), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(200, 16, 46, 0.3);
+            border-color: var(--bearcat-red);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-visual {
+            height: 200px;
+            background: var(--gradient-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .project-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-red);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-caption {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .project-button {
+            background: var(--bearcat-red);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .project-button:hover {
+            background: #ff4757;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(200, 16, 46, 0.4);
+        }
+
+        /* Contact Social Links */
+        .contact-social {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .social-link {
+            padding: 1rem;
+            background: var(--dark-gray);
+            border: 2px solid var(--border-dark);
+            border-radius: 12px;
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-link:hover {
+            color: var(--bearcat-red);
+            border-color: var(--bearcat-red);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(200, 16, 46, 0.4);
+        }
+
+        /* Bearcat Theme Integration */
+        .bearcat-accent {
+            background: var(--gradient-red);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .paw-print {
+            display: inline-block;
+            margin: 0 0.5rem;
+            color: var(--bearcat-red);
+            animation: pawBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes pawBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-red);
+            transform-origin: 0%;
+            transform: scaleX(0);
+            z-index: 1001;
+            transition: transform 0.3s ease;
+        }
+
+        /* Intro Highlight */
+        .intro-highlight {
+            background: var(--dark-gray);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--bearcat-red);
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .intro-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-red);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .navbar-links {
+                gap: 1rem;
+            }
+
+            .main-content {
+                padding: 0 1rem;
+                margin-top: 120px;
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .matrix-table td {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Navigation -->
+    <div class="navbar-container">
+        <nav class="navbar">
+            <div class="navbar-left">
+                <h1>Tyler Johnson <span class="paw-print">🐾</span></h1>
+            </div>
+            <div class="navbar-right">
+                <ul class="navbar-links">
+                    <li><a href="#bio" class="navbar-link">Biography</a></li>
+                    <li><a href="#skills" class="navbar-link">Skills</a></li>
+                    <li><a href="#projects" class="navbar-link">Projects</a></li>
+                    <li><a href="#contact" class="navbar-link">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <!-- Biography Section -->
+        <section id="bio" class="fade-in">
+            <h2 class="header-text">Biography</h2>
+            <div class="intro-highlight">
+                <p class="body-text">I'm Tyler Jalon Johnson, a Computer Science student at the University of Cincinnati with a minor in Math. I am passionate about software engineering and planning for a career in fintech and enterprise-scale applications.</p>
+            </div>
+            <p class="body-text">During my time in college, I have had the opportunity to work at companies like Synchrony, BetterLLC, and General Electric, gaining experience in everything from startup environments to enterprise-scale systems. I'm proud to be a <span class="bearcat-accent">Bearcat</span> and embody the spirit of determination and excellence that our university represents.</p>
+            <p class="body-text">As a Cincinnati Pride Scholar, Backrs Scholar, and University Honors Scholar, I'm committed to academic excellence while actively contributing to campus life as Chair of Campus Life in Student Body Government and Ambassador for the Warren Bennis Leadership Institute.</p>
+            <p class="body-text">My interests include archival fashion, marathons, capoeira, language exchange, anime, gaming, and volunteering - always staying active in the UC community!</p>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="fade-in">
+            <h2 class="header-text">Skills <span class="paw-print">🐾</span></h2>
+            
+            <!-- Academic Coursework -->
+            <p class="subtitle-text">Relevant Coursework:</p>
+            <div class="matrix-container">
+                <table class="matrix-table">
+                    <tbody>
+                        <tr>
+                            <td>Calculus 1 & 2</td>
+                            <td>Python & R Programming</td>
+                            <td>Artificial Intelligence</td>
+                        </tr>
+                        <tr>
+                            <td>Data Structures</td>
+                            <td>Computer Systems</td>
+                            <td>Information Security</td>
+                        </tr>
+                        <tr>
+                            <td>Linear Algebra</td>
+                            <td>Probability & Statistics</td>
+                            <td>Computational Studies</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Technical Skills -->
+            <p class="subtitle-text">Technical Skills:</p>
+            <div class="skills-hybrid">
+                <div class="skills-grid">
+                    <div class="skill-tag">Java</div>
+                    <div class="skill-tag">C++</div>
+                    <div class="skill-tag">Python</div>
+                    <div class="skill-tag">JavaScript</div>
+                    <div class="skill-tag">TypeScript</div>
+                    <div class="skill-tag">SQL</div>
+                    <div class="skill-tag">Swift (SwiftUI)</div>
+                    <div class="skill-tag">React</div>
+                    <div class="skill-tag">Node.js</div>
+                    <div class="skill-tag">TensorFlow</div>
+                    <div class="skill-tag">Git/GitHub</div>
+                    <div class="skill-tag">Linux</div>
+                    <div class="skill-tag">Docker</div>
+                    <div class="skill-tag">Firebase</div>
+                    <div class="skill-tag">Flask</div>
+                    <div class="skill-tag">OpenCV</div>
+                    <div class="skill-tag">Pandas</div>
+                    <div class="skill-tag">NumPy</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="fade-in">
+            <h2 class="header-text">Featured Project: Bearcat Brief <span class="paw-print">🐾</span></h2>
+    <!-- Project Introduction -->
+    <div class="project-intro">
+        <p class="body-text">
+            <strong>Bearcat Brief</strong> is an interactive sports app built with SwiftUI that keeps UC students and fans updated on Bearcat athletics. 
+            The app features real-time scores, schedules, news, and push notifications for game updates.
+        </p>
+        <p class="body-text">
+            <strong>Technologies:</strong> SwiftUI, iOS Development, Real-time Data APIs, Push Notifications, UC Athletics Integration
+        </p>
+    </div>
+
+    <!-- Interactive Demo -->
+    <div class="bearcat-demo-container">
+        <div class="demo-header">
+            <h3 class="subtitle-text">🐾 Interactive Demo - Try it out!</h3>
+            <p style="color: var(--text-gray); font-size: 0.9rem; text-align: center; margin-bottom: 1rem;">
+                Navigate through the tabs to explore schedules, scores, news, and team information
+            </p>
+        </div>
+        
+        <div class="phone-frame">
+            <div class="phone-screen">
+                <!-- Status Bar -->
+                <div class="status-bar">
+                    <span>9:41</span>
+                    <div class="status-right">
+                        <span>●●●●●</span>
+                        <span>📶</span>
+                        <span>🔋 100%</span>
+                    </div>
+                </div>
+
+                <!-- App Header -->
+                <div class="app-header">
+                    <h1 class="app-title">BEARCAT BRIEF</h1>
+                    <p class="app-subtitle">University of Cincinnati Athletics</p>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <div class="nav-tabs">
+                    <button class="nav-tab active" onclick="showAppSection('schedule')">Schedule</button>
+                    <button class="nav-tab" onclick="showAppSection('scores')">Scores</button>
+                    <button class="nav-tab" onclick="showAppSection('news')">News</button>
+                    <button class="nav-tab" onclick="showAppSection('teams')">Teams</button>
+                </div>
+
+                <!-- Content Area -->
+                <div class="app-content-area">
+                    <!-- Schedule Section -->
+                    <div id="app-schedule" class="app-content-section active">
+                        <div class="filter-section">
+                            <div class="filter-buttons">
+                                <button class="filter-btn active" onclick="filterAppGames('all')">All</button>
+                                <button class="filter-btn" onclick="filterAppGames('football')">Football</button>
+                                <button class="filter-btn" onclick="filterAppGames('basketball')">Basketball</button>
+                            </div>
+                        </div>
+
+                        <!-- Football Game -->
+                        <div class="game-card" data-sport="football">
+                            <div class="game-header">Football • Big 12 Conference</div>
+                            <div class="game-content">
+                                <div class="game-matchup">
+                                    <div class="team-section">
+                                        <div class="team-logo cincinnati">C</div>
+                                        <div class="team-info">
+                                            <h3>Cincinnati</h3>
+                                            <p>Bearcats (8-2)</p>
+                                        </div>
+                                    </div>
+                                    <div class="vs-divider">vs</div>
+                                    <div class="team-section">
+                                        <div class="team-logo kansas">K</div>
+                                        <div class="team-info">
+                                            <h3>Kansas</h3>
+                                            <p>Jayhawks (7-3)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="game-details">
+                                    <div class="game-status upcoming">Saturday</div>
+                                    <div class="game-time">
+                                        <div class="date">Nov 23</div>
+                                        <div class="time">3:30 PM</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Basketball Games -->
+                        <div class="game-card" data-sport="basketball">
+                            <div class="game-header">Men's Basketball • Big 12 Conference</div>
+                            <div class="game-content">
+                                <div class="game-matchup">
+                                    <div class="team-section">
+                                        <div class="team-logo cincinnati">C</div>
+                                        <div class="team-info">
+                                            <h3>Cincinnati</h3>
+                                            <p>Bearcats (12-4)</p>
+                                        </div>
+                                    </div>
+                                    <div class="vs-divider">@</div>
+                                    <div class="team-section">
+                                        <div class="team-logo baylor">B</div>
+                                        <div class="team-info">
+                                            <h3>Baylor</h3>
+                                            <p>Bears (10-6)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="game-details">
+                                    <div class="game-status upcoming">Tuesday</div>
+                                    <div class="game-time">
+                                        <div class="date">Mar 15</div>
+                                        <div class="time">9:00 PM</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="game-card" data-sport="basketball">
+                            <div class="game-header">Women's Basketball • Big 12 Conference</div>
+                            <div class="game-content">
+                                <div class="game-matchup">
+                                    <div class="team-section">
+                                        <div class="team-logo cincinnati">C</div>
+                                        <div class="team-info">
+                                            <h3>Cincinnati</h3>
+                                            <p>Bearcats (15-8)</p>
+                                        </div>
+                                    </div>
+                                    <div class="vs-divider">vs</div>
+                                    <div class="team-section">
+                                        <div class="team-logo texas-tech">TT</div>
+                                        <div class="team-info">
+                                            <h3>Texas Tech</h3>
+                                            <p>Red Raiders (13-10)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="game-details">
+                                    <div class="game-status upcoming">Friday</div>
+                                    <div class="game-time">
+                                        <div class="date">Mar 18</div>
+                                        <div class="time">7:00 PM</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scores Section -->
+                    <div id="app-scores" class="app-content-section">
+                        <div class="game-card">
+                            <div class="game-header">Men's Basketball • Big 12</div>
+                            <div class="game-content">
+                                <div class="game-matchup">
+                                    <div class="team-section">
+                                        <div class="team-logo cincinnati">C</div>
+                                        <div class="team-info">
+                                            <h3>Cincinnati</h3>
+                                            <p>Bearcats</p>
+                                        </div>
+                                    </div>
+                                    <div class="score-display">78 - 71</div>
+                                    <div class="team-section">
+                                        <div class="team-logo houston">H</div>
+                                        <div class="team-info">
+                                            <h3>Houston</h3>
+                                            <p>Cougars</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="game-details">
+                                    <div class="game-status final">Final</div>
+                                    <div class="game-time">
+                                        <div class="date">Mar 12</div>
+                                        <div class="time">2:00 PM</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="game-card">
+                            <div class="game-header">Football • Big 12</div>
+                            <div class="game-content">
+                                <div class="game-matchup">
+                                    <div class="team-section">
+                                        <div class="team-logo cincinnati">C</div>
+                                        <div class="team-info">
+                                            <h3>Cincinnati</h3>
+                                            <p>Bearcats</p>
+                                        </div>
+                                    </div>
+                                    <div class="score-display">31 - 24</div>
+                                    <div class="team-section">
+                                        <div class="team-logo west-virginia">WV</div>
+                                        <div class="team-info">
+                                            <h3>West Virginia</h3>
+                                            <p>Mountaineers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="game-details">
+                                    <div class="game-status final">Final</div>
+                                    <div class="game-time">
+                                        <div class="date">Nov 16</div>
+                                        <div class="time">12:00 PM</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- News Section -->
+                    <div id="app-news" class="app-content-section">
+                        <div class="news-item">
+                            <div class="news-title">Bearcats Advance to Big 12 Championship</div>
+                            <div class="news-excerpt">Cincinnati secures their spot in the conference championship game with a commanding victory over Kansas...</div>
+                            <div class="news-meta">Sports Information • 2 hours ago</div>
+                        </div>
+
+                        <div class="news-item">
+                            <div class="news-title">Johnson Named Big 12 Player of the Week</div>
+                            <div class="news-excerpt">Senior guard Tyler Johnson earned Big 12 Player of the Week honors after averaging 24 points and 8 assists...</div>
+                            <div class="news-meta">UC Athletics • 1 day ago</div>
+                        </div>
+
+                        <div class="news-item">
+                            <div class="news-title">Women's Basketball Clinches Tournament Berth</div>
+                            <div class="news-excerpt">The Lady Bearcats have officially secured their spot in the Big 12 tournament...</div>
+                            <div class="news-meta">Cincinnati Athletics • 2 days ago</div>
+                        </div>
+                    </div>
+
+                    <!-- Teams Section -->
+                    <div id="app-teams" class="app-content-section">
+                        <div class="team-card">
+                            <div class="team-logo cincinnati">🏈</div>
+                            <div class="team-details">
+                                <h3>Football</h3>
+                                <p>Record: 8-2 (6-1 Big 12)</p>
+                                <p>Next Game: vs Kansas • Nov 23</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="team-logo cincinnati">🏀</div>
+                            <div class="team-details">
+                                <h3>Men's Basketball</h3>
+                                <p>Record: 12-4 (4-2 Big 12)</p>
+                                <p>Next Game: @ Baylor • Mar 15</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="team-logo cincinnati">🏀</div>
+                            <div class="team-details">
+                                <h3>Women's Basketball</h3>
+                                <p>Record: 15-8 (7-5 Big 12)</p>
+                                <p>Next Game: vs Texas Tech • Mar 18</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Links -->
+    <div class="project-links">
+        <a href="https://github.com/tjohnson012" class="project-button" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.5rem;">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            View Source Code
+        </a>
+        <button class="project-button" onclick="alert('🐾 Go Bearcats! This interactive demo showcases the full app functionality!')">
+            🐾 UC Pride
+        </button>
+    </div>
+
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="fade-in">
+            <h2 class="header-text">Contact <span class="paw-print">🐾</span></h2>
+            <div style="text-align: center;">
+                <p class="body-text">
+                    Please reach out at <a class="link-text" href="mailto:johns7to@mail.uc.edu">johns7to@mail.uc.edu</a>, 
+                    or connect with me through social media!
+                </p>
+                
+                <div class="contact-social">
+                    <a href="https://www.linkedin.com/in/jalonjohnson21/" class="social-link" target="_blank">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/tjohnson012" class="social-link" target="_blank">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:johns7to@mail.uc.edu" class="social-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <p class="body-text">
+                    <span class="bearcat-accent">Go Bearcats!</span> I'm always excited to connect with fellow students, 
+                    professionals, and anyone interested in collaborating on innovative software projects. 
+                    <br><br>
+                    <strong>Current Status:</strong> Chair of Campus Life | Warren Bennis Leadership Ambassador | ACM Conference Lead
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+
+        // App navigation functions
+        function showAppSection(sectionName) {
+            const sections = document.querySelectorAll('.app-content-section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            document.getElementById('app-' + sectionName).classList.add('active');
+            
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function filterAppGames(sport) {
+            const games = document.querySelectorAll('#app-schedule .game-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            games.forEach(game => {
+                if (sport === 'all' || game.dataset.sport === sport) {
+                    game.style.display = 'block';
+                } else {
+                    game.style.display = 'none';
+                }
+            });
+        }
+
+        // Add click animations
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.game-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+        });
+
+        
+        // Progress bar functionality
+        function updateProgressBar() {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (scrollTop / scrollHeight) * 100;
+            document.querySelector('.progress-bar').style.transform = `scaleX(${scrolled / 100})`;
+        }
+
+        // Navbar scroll effect
+        function updateNavbar() {
+            const navbar = document.querySelector('.navbar-container');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            updateProgressBar();
+            updateNavbar();
+        });
+
+        // Initialize
+        window.addEventListener('load', () => {
+            updateProgressBar();
+            updateNavbar();
+        });
+
+        // Bearcat easter egg (click the paw)
+        document.querySelector('.paw-print').addEventListener('click', () => {
+            const messages = ['🐾 ROAR!', 'Go Bearcats! 🦁', 'Bearcat Pride! 🐾', 'UC Strong! 💪', 'C-A-T-S CATS CATS CATS! 🐾'];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            
+            // Create floating message
+            const messageEl = document.createElement('div');
+            messageEl.textContent = randomMessage;
+            messageEl.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 3rem;
+                font-weight: bold;
+                background: linear-gradient(135deg, #C8102E, #ff4757);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                z-index: 9999;
+                pointer-events: none;
+                animation: roarAnimation 2s ease-out forwards;
+            `;
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes roarAnimation {
+                    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+                    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+                    100% { opacity: 0; transform: translate(-50%, -50%) scale(1) translateY(-50px); }
+                }
+            `;
+            document.head.appendChild(style);
+            document.body.appendChild(messageEl);
+            
+            setTimeout(() => {
+                document.body.removeChild(messageEl);
+                document.head.removeChild(style);
+            }, 2000);
+        });
+
+        // Add some dynamic skill highlighting
+        document.querySelectorAll('.skill-tag').forEach(skill => {
+            skill.addEventListener('click', () => {
+                skill.style.background = 'rgba(200, 16, 46, 0.3)';
+                skill.style.color = '#ff4757';
+                setTimeout(() => {
+                    skill.style.background = '';
+                    skill.style.color = '';
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
